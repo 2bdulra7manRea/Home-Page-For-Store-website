@@ -1,0 +1,328 @@
+$ColorBtn:rgb(233, 52, 52);
+$ColorBtn2:rgb(50, 50, 58);
+$ColorBackmain:rgb(12, 7, 34);
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+$i:12;
+@while $i>0{ 
+.col-#{$i}{
+ width:(100%)/(12/$i);   
+}
+$i:$i - 1;
+}
+[class*="col-"]{
+    float: left;
+}
+.row{   
+    width:100%;
+    &:after{
+        display: table;
+        content:"";
+        clear:both;
+    }
+}
+
+.flex{
+    display: flex;
+    flex-flow:row wrap ;
+    justify-content: space-around;
+    padding:10px;
+}
+.m{
+margin-top:100px;
+margin-bottom:100px;
+}
+.fixed{
+position: fixed;
+width:100%;
+z-index:10;
+}
+@keyframes slide{
+    0%{
+        background-image:url("imgs/18.jpg");
+    }
+    50%{
+        background-image:url("imgs/16.jpg");  
+    }
+    100%{
+        background-image:url("imgs/15.jpg");  
+    }
+}
+@mixin Linking {
+text-decoration: none;
+color: white;
+display: inline-block;
+font-size:20px;   
+padding:10px; 
+}
+@mixin overlay ($ColorBack){
+    top:0;
+    position: absolute;
+    background-color: $ColorBack;
+    width:100%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+%box{
+display:flex;
+flex-flow: row wrap;
+justify-content: space-between;
+ul{
+    list-style-type: none;
+}
+li{
+    display: inline-block;
+    padding:10px;
+    font-size:20px;
+    border-left:1px solid rgba(128, 128, 128, 0.472);
+}
+
+}
+
+main{
+    background-color: $ColorBackmain;
+    color: white;
+    width:100%;
+@extend %box;
+    
+}
+
+nav{
+@extend %box;
+padding:15px;
+background-color: white;
+h1{
+    font-size:40px;
+    display: inline-block;
+    margin-left: 20px;
+}
+li{cursor: pointer; border: none; &:hover{color: tomato;}}
+
+}
+@mixin heading($path) {
+    
+
+    background-image:url($path);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:600px;
+    position: relative;
+}
+header{
+    @include heading("imgs/18.jpg");
+    a{
+        @include Linking();
+        background-color: $ColorBtn;
+        position: absolute;
+        right:10%;
+        top:70%;
+    }
+
+    animation:slide 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    
+
+
+}
+
+@mixin card ($path){
+background-image: url($path);
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+width:30%;
+@media (max-width:1000px) {
+    width:33.3333333333%;
+}
+@media (max-width:700px) {
+    width:100%;
+}
+
+div{
+    display: flex;
+    flex-flow: wrap column;
+    align-items:flex-start;
+    align-content: space-around;
+    color: white;
+    width:50%;
+    margin:10px;
+}
+
+a{
+    @include Linking();
+    background-color:$ColorBtn2;
+    border:1px solid white;
+}
+span{
+    border-top:1px solid white;
+    border-bottom: 1px solid white;
+    font-size:23px;
+    display: block;
+    margin-bottom:20px;
+    margin-top:10px;
+}
+}
+
+.boxing{
+    @include card("2.jpg");
+}
+.boxing1{
+    @include card("1.jpg");
+}
+.boxing2{
+    @include card("3.jpg");
+}
+.gray{
+background-color: rgb(233, 233, 233);
+padding:20px;
+}
+
+
+.cardProduct{
+    @media (max-width:1000px) {
+        width:33.3333333333%;
+    }
+    @media (max-width:700px) {
+        width:100%;
+    }
+box-shadow:2px 2px 4px rgba(128, 128, 128, 0.479) ;
+margin:10px;
+width:20%;
+height:350px;
+div{
+    position: relative;
+    width:100%;
+    height:70%;
+
+    img{
+        width:100%;
+        height:100%;
+    }
+    div{
+        visibility: hidden;
+   @include overlay(rgba(255, 99, 71, 0.589));
+        
+        a{
+            @include Linking();
+            border:1px solid white;
+            &:hover{
+                background-color:$ColorBtn2;
+            }
+        }
+    }
+}
+background-color: white;
+
+&:hover div{
+    visibility: visible;
+}
+
+
+
+font-family:Arial, Helvetica, sans-serif;
+figure{
+    margin:20px 10px 10px 20px;
+    color:rgb(77, 76, 76);
+}
+p{
+    color: tomato;
+    font-size:20px;
+}
+}
+
+
+
+.header1{
+    @include heading("17.jpg");
+    div{
+    @include overlay(rgba(56, 56, 56, 0.507));
+    a{
+        @include Linking();
+        background-color:$ColorBtn2;
+        border:1px solid white;
+        padding:20px;
+        transition: 1s;
+        margin:10px;
+        &:hover{
+         background-color: rgba(255, 0, 0, 0);   
+        }
+    }
+    }
+    animation:slide 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    
+}
+
+.adv{
+    cursor: pointer;
+    width:100%;
+    margin-top:100px;
+    margin-bottom:100px;
+    background-color: rgb(255, 215, 237);
+    padding:20px;
+    color: rgb(255, 43, 160);
+    font-size:20px;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+  
+}
+footer{
+    background-color: $ColorBackmain;
+    width:100%;
+  
+   
+    figure{
+        color: rgba(255, 255, 255, 0.726);
+        width:33%;
+        padding:20px;
+        padding-top:0;
+        font-weight: lighter;
+        figcaption{
+            display: block;
+            font-size:25px;
+            margin-bottom:20px;
+            color: white; 
+            @media (max-width:1000px) {
+                font-size:10px;   
+           }
+        }
+        @media (max-width:1000px) {
+             width:50%;
+             font-size:10px;   
+        }  
+        ul{
+            list-style-type: none;
+            li{
+                display: block;
+                margin:10px 0px 0px 10px;
+            }
+        }
+    }
+
+}
+.p{
+padding-top:100px;
+
+}
+.texting{
+    margin-top:20px;
+    width:100%;
+    padding:10px;
+    font-size:35px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
