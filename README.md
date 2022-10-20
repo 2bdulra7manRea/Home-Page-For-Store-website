@@ -1,8 +1,12 @@
-#Home Page for Store Website
+# Home-Page-for-Store-Website
 
-Technologies:
+
+## Technologies:
+
 -HTML
 -SCSS
 -CSS
 
-check it out https://2bdulra7manrea.github.io/Html-template-/
+## Website 
+
+https://2bdulra7manrea.github.io/Home-Page-For-Store-website/
